@@ -15,7 +15,7 @@ export default function App() {
   const [splash, setSplash] = useState(true);
 
   useEffect(() => {
-    const t = setTimeout(() => setSplash(false), 2000);
+    const t = setTimeout(() => setSplash(false), 2500);
     return () => clearTimeout(t);
   }, []);
 
@@ -24,8 +24,7 @@ export default function App() {
   if (splash) {
     return (
       <div className="splash">
-        <div className="splash-icono">📖</div>
-        <h1>Biblia App</h1>
+        <img src="./logo.png" alt="La Biblia" className="splash-logo" />
       </div>
     );
   }
@@ -36,7 +35,7 @@ export default function App() {
         <button className="boton-menu" onClick={() => setMenuAbierto(!menuAbierto)}>
           ☰
         </button>
-        <span>Biblia App</span>
+        <span>La Biblia</span>
       </header>
 
       {menuAbierto && (
@@ -63,7 +62,7 @@ export default function App() {
         <NavLink to="/" end>Inicio</NavLink>
         <NavLink to="/libros">Libros</NavLink>
         <NavLink to="/guardados">Guardados</NavLink>
-        <NavLink to="/del-dia">Del día</NavLink>
+        <NavLink to="/del-dia">Pan del día</NavLink>
         <NavLink to="/acerca">Info</NavLink>
       </nav>
     </HashRouter>

@@ -77,7 +77,21 @@ export default function Libros() {
 
       {visibles.map((cat) => (
         <div key={cat.titulo}>
-          <h2>{cat.titulo}</h2>
+          <div className="cat-titulo">
+  <img
+    src={cat.titulo.startsWith("Antiguo") ? "./pan.jpg" : "./iglesia.jpg"}
+    alt=""
+    className="cat-img"
+  />
+  <h2>{cat.titulo}</h2>
+</div><div className="cat-titulo">
+  <img
+    src={cat.titulo.startsWith("Antiguo") ? "./pan.jpg" : "./iglesia.jpg"}
+    alt=""
+    className="cat-img"
+  />
+  <h2>{cat.titulo}</h2>
+  </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {cat.libros.map(([nombre, api]) => (
               <Link key={api} to={`/capitulo/${encodeURIComponent(api)}/1`}>

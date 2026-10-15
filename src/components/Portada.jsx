@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 export default function Portada() {
   return (
-    <section>
-      <h1>Biblia App</h1>
-      <p>Lee la Biblia por libros y capítulos.</p>
+    <section className="portada">
+      <img src="./logo.png" alt="La Biblia" className="portada-logo" />
+      <p>Tu pan de cada día: lee, guarda y comparte la Palabra.</p>
+      <Link to="/libros">Empezar a leer</Link>
     </section>
   );
 }

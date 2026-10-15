@@ -1,35 +1,47 @@
+const ingredientes = [
+  ["🌾", "El grano", "Los textos vienen de bible-api.com, traducción World English Bible (dominio público)."],
+  ["⚛️", "La masa", "Interfaz hecha con React y Vite."],
+  ["🧭", "El horno", "Navegación entre pantallas con React Router."],
+  ["🧺", "La alforja", "Tus guardados se quedan en la memoria del dispositivo."],
+];
+
+const pasos = [
+  "Busca un libro o filtra por testamento.",
+  "Abre un capítulo y lee sus versículos.",
+  "Guarda los capítulos que quieras releer.",
+  "Comparte un pasaje con quien quieras.",
+  "Vuelve cada día por tu pan del día.",
+];
+
 export default function Acerca() {
   return (
     <section>
-      <h1>Acerca de Biblia App</h1>
+      <div className="info-hero">
+        <div className="info-hero-icono">🍞</div>
+        <h1>La receta de La Biblia</h1>
+        <p>Una app para leer la Palabra como pan de cada día.</p>
+      </div>
 
-      <h3>¿Qué es?</h3>
-      <p>
-        Una app para leer la Biblia por libros y capítulos, guardar tus
-        capítulos favoritos y compartir pasajes con otras personas.
-      </p>
+      <h2>Ingredientes</h2>
+      {ingredientes.map(([icono, titulo, texto]) => (
+        <div className="info-tarjeta" key={titulo}>
+          <span className="info-icono">{icono}</span>
+          <div>
+            <strong>{titulo}</strong>
+            <p>{texto}</p>
+          </div>
+        </div>
+      ))}
 
-      <h3>¿De dónde vienen los datos?</h3>
-      <p>
-        Los textos se consultan en línea a la API pública{" "}
-        <strong>bible-api.com</strong>, que entrega los versículos en formato
-        JSON. La traducción usada es la World English Bible, de dominio público.
-      </p>
+      <h2>Preparación</h2>
+      {pasos.map((paso, i) => (
+        <div className="info-paso" key={paso}>
+          <span className="info-numero">{i + 1}</span>
+          <p>{paso}</p>
+        </div>
+      ))}
 
-      <h3>¿Qué puedes hacer?</h3>
-      <ul>
-        <li>Buscar y filtrar libros por testamento.</li>
-        <li>Leer cualquier capítulo con sus versículos.</li>
-        <li>Guardar capítulos en Guardados.</li>
-        <li>Compartir un pasaje.</li>
-        <li>Ver un versículo distinto cada día.</li>
-      </ul>
-
-      <h3>Tecnologías</h3>
-      <p>React, Vite y React Router.</p>
-
-      <h3>Autoría</h3>
-      <p>Hecho por: Yesica Gonzalez Zambrano</p>
+      <p className="info-firma">Hecha con cariño por Yesica González</p>
     </section>
   );
 }

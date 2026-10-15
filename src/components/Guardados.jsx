@@ -24,13 +24,14 @@ export default function Guardados() {
     <section>
       <h1>Guardados</h1>
       {guardados.length === 0 && (
-        <p>Aún no has guardado capítulos. Abre uno desde Libros y toca "Guardar".</p>
+        <div className="vacio">
+          <img src="./biblia.jpg" alt="" className="vacio-img" />
+          <p>Tu alforja está vacía. Abre un capítulo desde Libros y toca "Guardar".</p>
+        </div>
       )}
       {guardados.map((g) => (
-        <div
-          key={g.id}
-          style={{ display: "flex", justifyContent: "space-between", padding: "10px 0" }}
-        >
+        <div key={g.id} className="guardado">
+          <img src="./biblia.jpg" alt="" className="guardado-img" />
           <Link to={`/capitulo/${encodeURIComponent(g.libro)}/${g.cap}`}>
             {g.referencia}
           </Link>
