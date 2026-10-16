@@ -28,7 +28,7 @@ export default function Capitulo() {
     setGuardados(nuevos);
   };
 
-    const compartir = async () => {
+  const compartir = async () => {
     const texto =
       `${datos.reference}\n\n` +
       datos.verses
@@ -36,14 +36,16 @@ export default function Capitulo() {
         .map((v) => `${v.verse}. ${v.text.trim()}`)
         .join("\n");
     try {
-      if (navigator.share) {
+      if (window.AndroidShare) {
+        window.AndroidShare.compartir(texto);
+      } else if (navigator.share) {
         await navigator.share({ title: datos.reference, text: texto });
       } else {
         await navigator.clipboard.writeText(texto);
         alert("Texto copiado al portapapeles");
       }
-    } catch {
-      // la persona canceló el menú de compartir
+    } catch (e) {
+      if (e?.name !== "AbortError") alert("No se pudo compartir");
     }
   };
 
@@ -68,7 +70,7 @@ export default function Capitulo() {
       <button onClick={alternarGuardado}>
         {estaGuardado ? "★ Quitar de guardados" : "☆ Guardar capítulo"}
       </button>
-            <button onClick={compartir}>Compartir</button>
+      <button onClick={compartir}>Compartir</button>
       {datos.verses.map((v) => (
         <p key={v.verse}>
           <strong>{v.verse}.</strong> {v.text}
